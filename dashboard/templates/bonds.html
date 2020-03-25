@@ -10,11 +10,9 @@
         {% for bond in bonds %}
         <a href = "{% url 'update_bond' bond.id %}">
             <li>{{bond.description}}</li>
-
         </a>
         {% endfor %}
-    </ul>
-    
+    </ul>   
     <a href= "{% url 'create_bond' %}"> New bond</a>
 </body>
 </html>
