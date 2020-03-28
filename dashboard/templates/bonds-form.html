@@ -15,15 +15,29 @@
     {% if bond %}
         <a href="{% url 'delete_bond' bond.id %}">Delete</a>
     {% endif %}
-    <p>
-        <table class="table table-striped"><th>Day</th><th>Value</th>
-            {%for paiva in paivat%}
+    <div>
+    
+    <table class="table table-striped"><tr><th>Day</th></tr>
+        {%for paiva in paivat%}
+            <tr>
+                <td>{{paiva}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+    
+    
+    <div>
+        
+        <table class="table table-striped"><tr><th>Value</th></tr>
+            {%for kurssi in kurssit%}
                 <tr>
-                    <td>{{paiva}}</td>
+                    <td>{{kurssi}}</td>
                 </tr>
             {% endfor %}
         </table>
-    </p>
+        
+    </div>
 
 </body>
 </html>

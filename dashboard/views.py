@@ -25,7 +25,6 @@ def update_bond(request, id):
     form = BondForm(request.POST or None, instance = bond)
 
 
-
     api_key = 'G52RTNSQBOQ4FZZY'
 
     ts = TimeSeries(key = api_key, output_format='json')
@@ -39,22 +38,21 @@ def update_bond(request, id):
         counter = counter + 1
         if(counter <= 5):
             dict_list = keissi.keys()
-            for paiva in dict_list:
-
-            
-                paivat.append(paiva)
+            for paiva in dict_list:   
+                
                 try:       
                     arvo = keissi[paiva]["1. open"]
-                    
+                    #paivat[paiva] = arvo
+                    #print(paiva)
+                    #print(arvo)
+                    paivat.append(paiva)
                     kurssit.append(arvo)
                 except:
                     pass
 
-    pituus = len(paivat)
-    uusi_pituus = pituus - 5
-    del paivat[uusi_pituus:]
-    
-
+    #pituus = len(paivat)
+    #uusi_pituus = pituus - 5
+   # del paivat[uusi_pituus:]
 
     if form.is_valid():
         form.save()
