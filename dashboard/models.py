@@ -2,7 +2,7 @@ from django.db import models
 
 class Bond(models.Model):
     description = models.CharField(max_length=200)
-    buying_price = models.DecimalField(max_digits=8,decimal_places=2)
+    buying_price = models.IntegerField()
     total_price = models.IntegerField()
    
 
