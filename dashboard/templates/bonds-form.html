@@ -15,6 +15,15 @@
     {% if bond %}
         <a href="{% url 'delete_bond' bond.id %}">Delete</a>
     {% endif %}
-    
+    <p>
+        <table class="table table-striped"><th>Day</th><th>Value</th>
+            {%for paiva in paivat%}
+                <tr>
+                    <td>{{paiva}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </p>
+
 </body>
 </html>

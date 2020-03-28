@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import list_bonds, create_bond, update_bond, delete_bond
+from .data import get_data
 
 urlpatterns = [
     path('list', list_bonds, name='list_bonds'),
