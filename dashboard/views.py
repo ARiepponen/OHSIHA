@@ -31,38 +31,23 @@ def update_bond(request, id):
     data = ts.get_daily(symbol='MSFT', outputsize = 'compact')
 
     paivat = []
-    kurssit = []
-    counter = 0
+    avaimet = []
 
     
-
-    for keissi in data:
-        counter = counter + 1
-        if(counter <= 5):
-            dict_list = keissi.keys()
-            for paiva in dict_list:   
-                
-                try:       
-                    arvo = keissi[paiva]["1. open"]
-                    #paivat[paiva] = arvo
-                    #print(paiva)
-                    #print(arvo)
-                    paivat.append(paiva)
-                    kurssit.append(arvo)
-                except:
-                    pass
+    
+    for rivi in data:
+        for paiva in rivi.keys():
+            print(paiva)
+            avain = rivi[paiva]
+            avaimet.append(avain)
 
 
-    #pituus = len(paivat)
-    #uusi_pituus = pituus - 5
-   # del paivat[uusi_pituus:]
 
     
-
     if form.is_valid():
         form.save()
         return redirect('list_bonds')
-    return render(request, 'bonds-form.html', {'form':form, 'bond':bond, 'paivat':paivat,'kurssit':kurssit})
+    return render(request, 'bonds-form.html', {'form':form, 'bond':bond, 'paivat':paivat, 'avaimet':avaimet})
 
 
 
