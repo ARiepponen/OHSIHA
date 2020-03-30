@@ -34,6 +34,8 @@ def update_bond(request, id):
     kurssit = []
     counter = 0
 
+    
+
     for keissi in data:
         counter = counter + 1
         if(counter <= 5):
@@ -50,9 +52,12 @@ def update_bond(request, id):
                 except:
                     pass
 
+
     #pituus = len(paivat)
     #uusi_pituus = pituus - 5
    # del paivat[uusi_pituus:]
+
+    
 
     if form.is_valid():
         form.save()
