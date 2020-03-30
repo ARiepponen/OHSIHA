@@ -28,7 +28,7 @@ def update_bond(request, id):
     api_key = 'G52RTNSQBOQ4FZZY'
 
     ts = TimeSeries(key = api_key, output_format='json')
-    data = ts.get_daily(symbol='MSFT', outputsize = 'compact')
+    data = ts.get_daily(symbol=bond, outputsize = 'compact')
 
     paivat = []
     avaimet = []
@@ -40,8 +40,6 @@ def update_bond(request, id):
             print(paiva)
             avain = rivi[paiva]
             avaimet.append(avain)
-
-
 
     
     if form.is_valid():
