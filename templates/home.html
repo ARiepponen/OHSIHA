@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
-
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}"> logout     </a></p>
+  <h2>Hi {{ user.username }}!</h2>
+  
   <p><a href="{% url 'list_bonds' %}">   Check bonds? </a></p>
+  <p><a href="{% url 'logout' %}"> logout     </a></p>
 {% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
+  <h2 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">You are not logged in</h2>
+  <a href="{% url 'login' %}"> <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;" >login</p></a>
 {% endif %}
 {% endblock %}

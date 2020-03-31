@@ -8,12 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>{{bond}} was not found from the database</h2>
+    <h2>{{bond}} was not found from the database TOIMII!!!</h2>
     <form method = "post">
-        {% csrf_token %}
-        <h3>Do you want to remove this bond?</h3>
-        <button type= "submit" > Confirm</button>
+        <a href = "{% url 'list_bonds' %}">
+            <p>Delete & move to main page</p>
+        </a>
     </form>
 </body>
 </html>
-

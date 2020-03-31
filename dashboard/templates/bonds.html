@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <title>Document</title>
 </head>
 <body>
+    <h2>Here is the list of currently added bonds</h2>
+   
     <ul>
         {% for bond in bonds %}
         <a href = "{% url 'update_bond' bond.id %}">
-            <li>{{bond.description}}</li>
+            <li> <p style="font-family:georgia,garamond,serif;font-size:16px;font-style:italic;"> {{bond.description}} </p> </li>
         </a>
         {% endfor %}
     </ul>   
-    <a href= "{% url 'create_bond' %}"> New bond</a>
+    <a href= "{% url 'create_bond' %}"> <p style="font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">New bond </p></a>
 </body>
 </html>

@@ -13,30 +13,40 @@
 
 <body>
     <h2> New/update bond</h2>
+        <div class = "col-md-12">
+            <form method = "POST">
+                {% csrf_token %}
+                {{form}}
+                <button type = "submit">Save</button>
+            </form>
+
+            {% if bond %}
+                <a href="{% url 'delete_bond' bond.id %}">Delete</a>
+            {% endif %} </br>
             
-        <form method = "POST">
-            {% csrf_token %}
-            {{form}}
-            <button type = "submit">Save</button>
-        </form>
+                <div class="col-md-6">
+                    <table class="table table-striped"><tr><th>Open</th><th>High</th><th>Low</th><th>Close</th><th>Volume</th></tr>
+                        {%for arvo in avaimet%}
+                            <tr>
+                            {%for key, alkio in arvo.items%}
+                                
+                                <td>{{ alkio }}</td>
+                                
+                                {%endfor%}
+                            </tr>
+                            
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class = "col-md-6">
+                    <h1> Kuvaajaa tähän</h1>
+                </div>
+        
 
-        {% if bond %}
-             <a href="{% url 'delete_bond' bond.id %}">Delete</a>
-        {% endif %} </br>
+        </div>
 
 
-        <table class="table table-striped"><tr><th>Open</th><th>High</th><th>Low</th><th>Close</th><th>Volume</th></tr>
-            {%for arvo in avaimet%}
-                <tr>
-                {%for key, alkio in arvo.items%}
-                    
-                    <td>{{ alkio }}</td>
-                    {%endfor%}
-                </tr>
-                
-            {% endfor %}
-        </table>
-
+          
             
 
 
