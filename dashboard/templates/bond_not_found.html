@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>{{bond}} was not found from the database</h2>
+    <h2>{{bond}} was not found from the database or made too many requests (5 per min)</h2>
     <form method = "post">
         {% csrf_token %}
             <button type= "submit" >Delete & move to main page</button>
