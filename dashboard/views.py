@@ -25,6 +25,7 @@ def update_bond(request, id):
     bond = Bond.objects.get(id=id)
     form = BondForm(request.POST or None, instance = bond)
     api_key = 'G52RTNSQBOQ4FZZY'
+
     
     varit = [] 
     v = 0
@@ -86,15 +87,20 @@ def update_bond(request, id):
         'volume_values':volume_values, 'paivastr':paivastr, 'volumestr':volumestr,
             'paivatrvrs':paivatrvrs, 'varit':varit})
 
-    except:     
-        return render(request, 'bond_not_found.html', {'bond':bond})
+    except: 
+
+        if request.method == 'GET':
+            return render(request, 'bond_not_found.html', {'bond':bond})
+        else:
+            bond.delete()
+            return redirect('list_bonds')
      
 
 def delete_bond(request, id):
     bond = Bond.objects.get(id=id)
     
     if request.method == 'POST':
-        print(bond)
+        
         bond.delete()
         
         return redirect('list_bonds')
@@ -106,13 +112,13 @@ def delete_bond(request, id):
 def not_in_database(request, id):
     bond = Bond.objects.get(id=id)
 
-    if request == 'GET':
+    if request.method == 'POST':
         bond.delete()
-        print("kissa")
+        
         return redirect('list_bonds')
     
-    print("koira")
+    
 
-    return redirect(request, 'bond_not_found.html', {'bond':bond})
+    return render(request, 'bond_not_found.html', {'bond':bond})
     
     
