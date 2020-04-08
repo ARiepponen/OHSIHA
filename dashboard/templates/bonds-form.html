@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" media="screen" href= "style.css">
+    
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <script src='https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js'> </script>
@@ -19,7 +19,7 @@
             <form method = "POST">
                 {% csrf_token %}
                 {{form}}
-                <button type = "submit">Save</button>
+                <button type = "submit">Save & exit</button>
             </form>
 
             {% if bond %}
@@ -34,7 +34,9 @@
                             </tr>
                         {% endfor %}
                     </table>
+                {% if bond %}
                 <p>Data from AlphaVantage Link: https://www.alphavantage.co</p>
+                {%endif%}    
                 </div >
 
             
@@ -65,20 +67,11 @@
                                     label: 'Opening price',
                                     data: [{% for item in open_values %} {{item}}, {% endfor %}],
                                     backgroundColor: [
-                                        'rgba(255, 99, 132, 0.2)',
-                                        'rgba(54, 162, 235, 0.2)',
-                                        'rgba(255, 206, 86, 0.2)',
-                                        'rgba(75, 192, 192, 0.2)',
-                                        'rgba(153, 102, 255, 0.2)',
-                                        'rgba(255, 159, 64, 0.2)'
+                                        'rgba(100, 0, 255, 1)',
+                                        
                                     ],
                                     borderColor: [
-                                        'rgba(255, 99, 132, 1)',
-                                        'rgba(54, 162, 235, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(75, 192, 192, 1)',
-                                        'rgba(153, 102, 255, 1)',
-                                        'rgba(255, 159, 64, 1)'
+                                    {% for item in varit %} '{{item}}', {% endfor %}
                                     ],
                                     borderWidth: 1
                                 }]
@@ -95,6 +88,7 @@
                         });
                         </script>
                         </b>
+                        <h2> Opening price last 100 days (from zero)</h2>
                         <canvas id="myChart3" width="400" height="400"></canvas>
                         <script>
                             var ctx = document.getElementById('myChart3').getContext('2d');
@@ -103,19 +97,14 @@
                                 data: {
                                     labels: [{% for item in paivatrvrs %}'{{item}}', {% endfor %}],
                                     datasets: [{
-                                        label: 'Opening price (from zero)',
+                                        label: 'Opening price',
                                         data: [{% for item in open_values %} {{item}}, {% endfor %}],
                                         backgroundColor: [
-                                            'rgba(0, 160, 150, 1)'
+                                            'rgba(50, 100, 50, 1)'
                                             
                                         ],
                                         borderColor: [
-                                            'rgba(255, 99, 132, 1)',
-                                            'rgba(54, 162, 235, 1)',
-                                            'rgba(255, 206, 86, 1)',
-                                            'rgba(75, 192, 192, 1)',
-                                            'rgba(153, 102, 255, 1)',
-                                            'rgba(255, 159, 64, 1)'
+                                        {% for item in varit %} '{{item}}', {% endfor %}
                                         ],
                                         borderWidth: 1
                                     }]
@@ -131,9 +120,7 @@
                                 }
                             });
                             </script>
-
-                        
-                            
+           
                            
                 </div>
                 <div class = "col-md-4">
@@ -152,20 +139,11 @@
                                         label: 'Volume',
                                         data: [{%for volume in volume_values%}{{volume}}, {%endfor%}],
                                         backgroundColor: [
-                                            'rgba(255, 99, 132, 0.2)',
-                                            'rgba(54, 162, 235, 0.2)',
-                                            'rgba(255, 206, 86, 0.2)',
-                                            'rgba(75, 192, 192, 0.2)',
-                                            'rgba(153, 102, 255, 0.2)',
-                                            'rgba(255, 159, 64, 0.2)'
+                                        {% for item in varit %} '{{item}}', {% endfor %}
+                                            
                                         ],
                                         borderColor: [
-                                            'rgba(255, 99, 132, 1)',
-                                            'rgba(54, 162, 235, 1)',
-                                            'rgba(255, 206, 86, 1)',
-                                            'rgba(75, 192, 192, 1)',
-                                            'rgba(153, 102, 255, 1)',
-                                            'rgba(255, 159, 64, 1)'
+                                        {% for item in varit %} '{{item}}', {% endfor %}
                                         ],
                                         borderWidth: 1
                                     }]
@@ -182,7 +160,7 @@
                             });
                             </script>
 
-                </div>     
+                </div>           
         </div>
 </body>
 

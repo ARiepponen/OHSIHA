@@ -25,6 +25,12 @@ def update_bond(request, id):
     bond = Bond.objects.get(id=id)
     form = BondForm(request.POST or None, instance = bond)
     api_key = 'G52RTNSQBOQ4FZZY'
+    
+    varit = [] 
+    v = 0
+    while v<100:
+        varit.append('rgba(250, 160, 0, 1)')
+        v = v + 1
 
     try:
         ts = TimeSeries(key = api_key, output_format='json')
@@ -70,14 +76,15 @@ def update_bond(request, id):
         paivatrvrs.reverse()
         volume_values.reverse()
         open_values.reverse()
+
         
-        testi = str('kissa')
         if form.is_valid():
             form.save()
             return redirect('list_bonds')
         return render(request, 'bonds-form.html', {'form':form, 'bond':bond, 'paivat':paivat, 
         'avaimet':avaimet, 'open_values':open_values,
-        'volume_values':volume_values, 'paivastr':paivastr, 'volumestr':volumestr,'testi':testi, 'paivatrvrs':paivatrvrs})
+        'volume_values':volume_values, 'paivastr':paivastr, 'volumestr':volumestr,
+            'paivatrvrs':paivatrvrs, 'varit':varit})
 
     except:     
         return render(request, 'bond_not_found.html', {'bond':bond})

@@ -8,8 +8,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Here is the list of currently added bonds</h2>
-   
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-8">
+    <h2>Here is the list of currently added stocks</h2>
+    
     <ul>
         {% for bond in bonds %}
         <a href = "{% url 'update_bond' bond.id %}">
@@ -17,6 +21,7 @@
         </a>
         {% endfor %}
     </ul>   
-    <a href= "{% url 'create_bond' %}"> <p style="font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">New bond </p></a>
+    <a href= "{% url 'create_bond' %}"> <p style="font-family:georgia,garamond,serif;font-size:24px;font-style:italic;">New stock </p></a>
+    </div>
 </body>
 </html>
